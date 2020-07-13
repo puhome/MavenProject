@@ -7,7 +7,7 @@
     <groupId>com.brzt</groupId>
     <artifactId>MavenProject</artifactId>
     <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.1-RELEASE</version>
     <modules>
         <module>CommonProject</module>
     </modules>
@@ -17,14 +17,25 @@
     <dependency>
         <groupId>junit</groupId>
         <artifactId>junit</artifactId>
-        <version>4.12</version>
+        <version>4.13</version>
         <scope>test</scope>
     </dependency>
-
-        <dependency>
-            <groupId>com.yahoo.vespa</groupId>
-            <artifactId>searchcore</artifactId>
-            <version>7.250.9</version>
-        </dependency>
     </dependencies>
+
+<!--    上传的仓库地址-->
+    <distributionManagement>
+        <repository>
+<!--            与settings.xml中的server的id对应，上传需要身份认证-->
+            <id>puhome2020</id>
+            <name>releases</name>
+<!--            稳定版 通过识别上面节点version来自动匹配上传的私服地址-->
+            <url>http://47.98.55.216:8081/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>puhome2020</id>
+            <name>snapshots</name>
+<!--            开发版-->
+            <url>http://47.98.55.216:8081/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>
