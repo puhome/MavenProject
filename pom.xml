@@ -11,6 +11,9 @@
     <modules>
         <module>CommonProject</module>
         <module>WebProject</module>
+        <module>J2eeProject</module>
+        <module>SiteProject</module>
+        <module>SpringProject</module>
     </modules>
 
 
