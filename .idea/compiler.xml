@@ -10,11 +10,11 @@
         <module name="CommonProject" />
         <module name="logging" />
         <module name="SpringProject" />
+        <module name="ZookeepersProject" />
         <module name="WebProject" />
         <module name="servlet" />
         <module name="ejbs" />
         <module name="ear" />
-        <module name="ZookeeperProject" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
