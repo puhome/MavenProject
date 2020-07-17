@@ -14,7 +14,11 @@
         <module name="servlet" />
         <module name="ejbs" />
         <module name="ear" />
+        <module name="ZookeeperProject" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="ZookeeperProject" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
 </project>
