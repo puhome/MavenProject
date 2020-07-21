@@ -13,8 +13,8 @@
         <module>WebProject</module>
         <module>J2eeProject</module>
         <module>SiteProject</module>
-        <module>SpringProject</module>
         <module>ZookeepersProject</module>
+        <module>SpringProjects</module>
     </modules>
 
 

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Configures the Camel Context-->
+
+<!--spring xml插件-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+  <camelContext xmlns="http://camel.apache.org/schema/spring">
+    <!-- here is a sample which processes the input files
+         (leaving them in place - see the 'noop' flag)
+         then performs content based routing on the message using XPath -->
+    <route>
+      <from uri="file:src/data?noop=true"/>
+      <choice>
+        <when>
+          <xpath>/person/city = 'London'</xpath>
+          <log message="UK message"/>
+          <to uri="file:target/messages/uk"/>
+        </when>
+        <otherwise>
+          <log message="Other message"/>
+          <to uri="file:target/messages/others"/>
+        </otherwise>
+      </choice>
+    </route>
+  </camelContext>
+
+<!--将对象Users交给spring容器管理
+bean元素：表示需要spring容器管理获取对象
+name:bean名称,不是唯一的，可以使用特殊符号，可以有多个
+class:类对应名称
+id:和name属性性质一样，是唯一的,并且不可以使用特殊符号
+无参数构造方法创建对象
+scope:singleton默认值，单列模式，在spring容器中只会创建一个对象
+      prototype多列原型，在spring中容器每次创建一个新对象
+      session web环境中，对象与session中生命周期一致
+      request web环境中，对象与request生命周期一致
+      一般情况下使用默认值，在Strus和Spring整合的时候，Strus的bean用多列模式
+生命周期：
+  init-method初始化：spring对象创建之后
+  destroy-method销毁：spring容器关闭的时候关闭容器内所有对象,若调用此方法则必须 context.close();
+-->
+
+<!--
+注入方式:
+  引用类型的注入：
+    set方法注入：实体类上有set方法
+  值类型的注入：
+-->
+  <bean scope="" name="users" class="com.brzt.entity.Users" init-method="" destroy-method="">
+<!--    set方式1-->
+    <property name="name" value="puhome"></property>
+<!--    set方式2-->
+    <property name="id">
+      <value>1111</value>
+    </property>
+<!--    值类型注入-->
+    <property name="car"  ref="car"></property>
+  </bean>
+  <bean name="car" class="com.brzt.entity.Car">
+    <property name="name">
+      <value>沃尔沃</value>
+    </property>
+    <property name="color">
+      <value>红色</value>
+    </property>
+  </bean>
+
+
+
+
+
+
+<!--  给bean的名称起别名-->
+  <alias name="users" alias="usersService"></alias>
+
+<!--静态工厂的创建方式  -->
+<bean name="usersfactory" class="com.brzt.factory.UsersFactory" factory-method="createUsers"></bean>
+
+
+<!--实例工厂的创建方式-->
+<bean name="userFactoryTwo" class="com.brzt.factory.UsersFactoryTwo" factory-method="createUsers"></bean>
+
+<!--<bean name="userFactoryTwo"  factory-bean="userFactoryBean" factory-method="createUsers"></bean>
+ <bean name="userFactoryBean"  class="com.brzt.factory.UsersFactoryTwo"></bean>-->
+
+  <!--
+    Ant-style风格
+    ?匹配任何单个字符
+    *匹配0或者任意单个数量的字符
+    **匹配0或者更多的目录
+  -->
+  </beans>

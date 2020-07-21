@@ -9,7 +9,7 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>SpringProject</artifactId>
+    <artifactId>SpringProjects</artifactId>
     <packaging>jar</packaging>
 
     <name>A Camel Spring Route</name>
@@ -26,7 +26,7 @@
             <dependency>
                 <groupId>org.apache.camel</groupId>
                 <artifactId>camel-bom</artifactId>
-                <version>3.4.0</version>
+                <version>3.4.1</version>
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
@@ -86,7 +86,7 @@
             <plugin>
                 <groupId>org.apache.camel</groupId>
                 <artifactId>camel-maven-plugin</artifactId>
-                <version>3.4.0</version>
+                <version>3.4.1</version>
             </plugin>
         </plugins>
     </build>
