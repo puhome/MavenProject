@@ -49,6 +49,7 @@ scope:singleton默认值，单列模式，在spring容器中只会创建一个�
   引用类型的注入：
     set方法注入：实体类上有set方法
   值类型的注入：
+  构造方法注入:
 -->
   <bean scope="" name="users" class="com.brzt.entity.Users" init-method="" destroy-method="">
 <!--    set方式1-->
@@ -59,6 +60,14 @@ scope:singleton默认值，单列模式，在spring容器中只会创建一个�
     </property>
 <!--    值类型注入-->
     <property name="car"  ref="car"></property>
+
+<!--
+构造方法注入
+type:参数的类型
+index：执行构造函数参数的顺序,从0开始
+-->
+  <constructor-arg name="name" value="普加"></constructor-arg>
+  <constructor-arg name="id" value="222"></constructor-arg>
   </bean>
   <bean name="car" class="com.brzt.entity.Car">
     <property name="name">
