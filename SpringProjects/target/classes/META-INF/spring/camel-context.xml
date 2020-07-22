@@ -4,9 +4,17 @@
 <!--spring xml插件-->
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="
        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+  <!--
+开启注解
+扫描包路径下的所有子孙包
+-->
+  <context:component-scan base-package="com.brzt.entity"></context:component-scan>
 
   <camelContext xmlns="http://camel.apache.org/schema/spring">
     <!-- here is a sample which processes the input files
@@ -50,6 +58,16 @@ scope:singleton默认值，单列模式，在spring容器中只会创建一个�
     set方法注入：实体类上有set方法
   值类型的注入：
   构造方法注入:
+  p名称注入：本质也是set方法注入
+  spel注入：了解
+  数组注入:
+  List注入:
+  Set注入：
+  Map注入:
+  Properties注入:
+  自动注入:
+  注解方式：非在配置文件里写
+
 -->
   <bean scope="" name="users" class="com.brzt.entity.Users" init-method="" destroy-method="">
 <!--    set方式1-->
@@ -60,7 +78,6 @@ scope:singleton默认值，单列模式，在spring容器中只会创建一个�
     </property>
 <!--    值类型注入-->
     <property name="car"  ref="car"></property>
-
 <!--
 构造方法注入
 type:参数的类型
@@ -68,6 +85,51 @@ index：执行构造函数参数的顺序,从0开始
 -->
   <constructor-arg name="name" value="普加"></constructor-arg>
   <constructor-arg name="id" value="222"></constructor-arg>
+
+    <!--    数组注入  -->
+<!--    单值-->
+<!--<property name="obj">-->
+<!--  <array>-->
+<!--    <value>a</value>-->
+<!--    <value>b</value>-->
+<!--  </array>-->
+<!--</property>-->
+<!--    对象-->
+<!--<property name="obj2">-->
+<!--  <array>-->
+<!--    <ref bean="car"></ref>-->
+<!--  </array>-->
+<!--</property>-->
+
+<!--List注入-->
+<!--<property name="list">-->
+<!--  <list>-->
+<!--    <value></value>-->
+<!--    <ref></ref>-->
+<!--  </list>-->
+<!--</property>-->
+
+<!--Set注入-->
+<!--<property name="set">-->
+<!--  <set>-->
+<!--    <value></value>-->
+<!--    <ref></ref>-->
+<!--  </set>-->
+<!--</property>-->
+
+<!--map注入    -->
+<!--    <property name="map">-->
+<!--      <map>-->
+<!--        <entry key="" value=""></entry>-->
+<!--      </map>-->
+<!--    </property>-->
+
+<!--    Properties注入    -->
+<!--    <property name="properties">-->
+<!--      <props>-->
+<!--        <prop key="a">b</prop>-->
+<!--      </props>-->
+<!--    </property>-->
   </bean>
   <bean name="car" class="com.brzt.entity.Car">
     <property name="name">
@@ -79,11 +141,17 @@ index：执行构造函数参数的顺序,从0开始
   </bean>
 
 
+  <!--自动注入-局部，全局在beans标签上-->
+<!--
+no：默认，不进行自动注入，需要使用value ref等
+byName：通过bean的名称进行注入，setter方法
+byType：通过bean类型进行注入
+constructor：类似byType
 
+-->
+<!--<bean autowire="default" name="user2" class="com.brzt.entity.Users"></bean>-->
 
-
-
-<!--  给bean的名称起别名-->
+  <!--  给bean的名称起别名-->
   <alias name="users" alias="usersService"></alias>
 
 <!--静态工厂的创建方式  -->
@@ -102,4 +170,5 @@ index：执行构造函数参数的顺序,从0开始
     *匹配0或者任意单个数量的字符
     **匹配0或者更多的目录
   -->
+
   </beans>

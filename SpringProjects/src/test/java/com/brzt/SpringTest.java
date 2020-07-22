@@ -1,5 +1,6 @@
 package com.brzt;
 
+import com.brzt.entity.Person;
 import com.brzt.entity.Users;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -17,5 +18,9 @@ public class SpringTest {
         System.out.println(users.getId());
         System.out.println(users.getCar().getName());
         System.out.println(users.getCar().getColor());
+        Person person= (Person) context.getBean("person");
+        System.out.println(person);
+
+
     }
 }
