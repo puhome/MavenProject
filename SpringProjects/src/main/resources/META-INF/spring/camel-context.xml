@@ -50,6 +50,14 @@ scope:singleton默认值，单列模式，在spring容器中只会创建一个�
     set方法注入：实体类上有set方法
   值类型的注入：
   构造方法注入:
+  p名称注入：本质也是set方法注入
+  spel注入：了解
+  数组注入:
+  List注入:
+  Set注入：
+  Map注入:
+  Properties注入:
+
 -->
   <bean scope="" name="users" class="com.brzt.entity.Users" init-method="" destroy-method="">
 <!--    set方式1-->
@@ -60,7 +68,6 @@ scope:singleton默认值，单列模式，在spring容器中只会创建一个�
     </property>
 <!--    值类型注入-->
     <property name="car"  ref="car"></property>
-
 <!--
 构造方法注入
 type:参数的类型
@@ -68,6 +75,53 @@ index：执行构造函数参数的顺序,从0开始
 -->
   <constructor-arg name="name" value="普加"></constructor-arg>
   <constructor-arg name="id" value="222"></constructor-arg>
+
+    <!--    数组注入  -->
+<!--    单值-->
+<property name="obj">
+  <array>
+    <value>a</value>
+    <value>b</value>
+  </array>
+</property>
+<!--    对象-->
+<property name="obj2">
+  <array>
+    <ref bean="car"></ref>
+  </array>
+</property>
+
+<!--List注入-->
+<property name="list">
+  <list>
+    <value></value>
+    <ref></ref>
+  </list>
+</property>
+
+<!--Set注入-->
+<property name="set">
+  <set>
+    <value></value>
+    <ref></ref>
+  </set>
+</property>
+
+<!--map注入    -->
+    <property name="map">
+      <map>
+        <entry key="" value=""></entry>
+      </map>
+    </property>
+
+<!--    Properties注入    -->
+    <property name="properties">
+      <props>
+        <prop key="a">b</prop>
+      </props>
+    </property>
+
+
   </bean>
   <bean name="car" class="com.brzt.entity.Car">
     <property name="name">
