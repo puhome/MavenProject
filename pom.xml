@@ -15,6 +15,7 @@
         <module>SiteProject</module>
         <module>ZookeepersProject</module>
         <module>SpringProjects</module>
+        <module>SocketProject</module>
     </modules>
 
 

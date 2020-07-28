@@ -6,13 +6,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="SocketProject" />
         <module name="primary-source" />
         <module name="CommonProject" />
         <module name="logging" />
         <module name="SpringProjects" />
         <module name="ZookeepersProject" />
-        <module name="WebProject" />
         <module name="servlet" />
+        <module name="WebProject" />
         <module name="ejbs" />
         <module name="ear" />
       </profile>
