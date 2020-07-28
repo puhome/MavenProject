@@ -10,6 +10,17 @@
        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
+<!--
+依赖顺序
+  1.类型
+    注释在Setter和构造函数上，选择的参数的类型
+  2.指定名称
+    通过注解 @Qualifier("car")指定bean
+    -->
+
+<!--  加载配置文件-->
+  <context:property-placeholder location="META-INF/spring/db.properties"></context:property-placeholder>
+
   <!--
 开启注解
 扫描包路径下的所有子孙包

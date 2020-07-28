@@ -20,7 +20,14 @@ public class SpringTest {
         System.out.println(users.getCar().getColor());
         Person person= (Person) context.getBean("person");
         System.out.println(person);
+        //配置文件注解
+        //EL表达式
+        System.out.println(users.getDriver());
 
+        //SqEL表达式
+        System.out.println(users.getName());
 
+        //初始化、销毁注解
+        context.close();//close后才会调用销毁方法
     }
 }

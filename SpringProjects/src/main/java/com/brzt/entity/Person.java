@@ -7,6 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 /**
  * Component注解方式注入,通用
  * 类似于手动注入的bean
@@ -54,5 +57,17 @@ public class Person {
     @Value("zhangsan")//赋值，建议用
     public void setName(String name) {
         this.name = name;
+    }
+
+    @PostConstruct
+    public void getInit()
+    {
+        System.out.println("初始化");
+    }
+
+    @PreDestroy
+    public  void  getDestroy()
+    {
+        System.out.println("销毁");
     }
 }

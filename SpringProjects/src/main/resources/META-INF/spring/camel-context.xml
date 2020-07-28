@@ -10,6 +10,17 @@
        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
+<!--
+依赖顺序
+  1.类型
+    注释在Setter和构造函数上，选择的参数的类型
+  2.指定名称
+    通过注解 @Qualifier("car")指定bean
+    -->
+
+<!--  加载配置文件-->
+  <context:property-placeholder location="META-INF/spring/db.properties"></context:property-placeholder>
+
   <!--
 开启注解
 扫描包路径下的所有子孙包
@@ -69,7 +80,10 @@ scope:singleton默认值，单列模式，在spring容器中只会创建一个�
   注解方式：非在配置文件里写
 
 -->
-  <bean scope="" name="users" class="com.brzt.entity.Users" init-method="" destroy-method="">
+<!--
+depends-on="bean名称"，指定的bean在该属性的bean之前创建
+-->
+  <bean scope="" name="users" class="com.brzt.entity.Users" init-method="" destroy-method="" depends-on="car">
 <!--    set方式1-->
     <property name="name" value="puhome"></property>
 <!--    set方式2-->
@@ -77,7 +91,7 @@ scope:singleton默认值，单列模式，在spring容器中只会创建一个�
       <value>1111</value>
     </property>
 <!--    值类型注入-->
-    <property name="car"  ref="car"></property>
+    <property name="car"  ref="car" ></property>
 <!--
 构造方法注入
 type:参数的类型
@@ -131,7 +145,11 @@ index：执行构造函数参数的顺序,从0开始
 <!--      </props>-->
 <!--    </property>-->
   </bean>
-  <bean name="car" class="com.brzt.entity.Car">
+<!--
+lazy-init="true" 用到的时候才加载
+在beans上配置后，为全局懒加载
+-->
+  <bean name="car" class="com.brzt.entity.Car" lazy-init="true">
     <property name="name">
       <value>沃尔沃</value>
     </property>
