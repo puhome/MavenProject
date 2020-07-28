@@ -5,10 +5,45 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="
        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
-       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/aop  http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+
+<!--  Spring AOP开始-->
+<!--将通知织入到目标对象中-->
+<!--  目标对象-->
+<bean name="primaryStudent" class="com.brzt.impl.PrimaryStudent"></bean>
+<!--通知对象-->
+  <bean name="primaryStudentNotice" class="com.brzt.notice.PrimaryStudentNotice"></bean>
+<!--将对象织入到目标对象中-->
+  <aop:config>
+<!--    配置切入点-->
+<!--
+通配符，批量配置
+()使用无参数匹配
+(..)使用任意参数匹配
+()使用一个参数匹配
+(String,)第一个是String参数，第二个任意
+*任何
+* com.brzt.impl.PrimaryStudent.add() == public void com.brzt.impl.PrimaryStudent.add()
+* com.brzt.impl.PrimaryStudent.*()
+* com.brzt.impl.PrimaryStudent.*(..) //带参数的
+* com.brzt.impl.*Student.*(..) //带参数的
+* com.brzt.impl..*Student.*(..) //带参数的
+-->
+    <aop:pointcut id="add" expression="execution(* com.brzt.impl.PrimaryStudent.*())"/>
+<!--    指定通知-->
+    <aop:aspect ref="primaryStudentNotice">
+<!--      指定通知并进行切入的点-->
+      <aop:after method="getAfter" pointcut-ref="add"></aop:after>
+      <aop:before method="getBefore" pointcut-ref="add"></aop:before>
+    </aop:aspect>
+  </aop:config>
+  <aop:aspectj-autoproxy  proxy-target-class="true"/>
+  <!--  Spring AOP结束-->
 
 <!--
 依赖顺序
@@ -25,7 +60,7 @@
 开启注解
 扫描包路径下的所有子孙包
 -->
-  <context:component-scan base-package="com.brzt.entity"></context:component-scan>
+  <context:component-scan base-package="com.brzt"></context:component-scan>
 
   <camelContext xmlns="http://camel.apache.org/schema/spring">
     <!-- here is a sample which processes the input files
@@ -80,6 +115,9 @@ scope:singleton默认值，单列模式，在spring容器中只会创建一个�
   注解方式：非在配置文件里写
 
 -->
+<!--
+depends-on="bean名称"，指定的bean在该属性的bean之前创建
+-->
   <bean scope="" name="users" class="com.brzt.entity.Users" init-method="" destroy-method="">
 <!--    set方式1-->
     <property name="name" value="puhome"></property>
@@ -88,7 +126,7 @@ scope:singleton默认值，单列模式，在spring容器中只会创建一个�
       <value>1111</value>
     </property>
 <!--    值类型注入-->
-    <property name="car"  ref="car"></property>
+    <property name="car"  ref="car" ></property>
 <!--
 构造方法注入
 type:参数的类型
@@ -142,7 +180,11 @@ index：执行构造函数参数的顺序,从0开始
 <!--      </props>-->
 <!--    </property>-->
   </bean>
-  <bean name="car" class="com.brzt.entity.Car">
+<!--
+lazy-init="true" 用到的时候才加载
+在beans上配置后，为全局懒加载
+-->
+  <bean name="car" class="com.brzt.entity.Car" lazy-init="true">
     <property name="name">
       <value>沃尔沃</value>
     </property>

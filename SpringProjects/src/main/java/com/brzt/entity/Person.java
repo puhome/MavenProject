@@ -62,12 +62,12 @@ public class Person {
     @PostConstruct
     public void getInit()
     {
-        System.out.println("初始化");
+        System.out.println("初始化-自动注入init");
     }
 
     @PreDestroy
     public  void  getDestroy()
     {
-        System.out.println("销毁");
+        System.out.println("销毁-自动注入destroy");
     }
 }

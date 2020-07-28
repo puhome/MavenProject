@@ -58,6 +58,26 @@
             <scope>test</scope>
         </dependency>
 
+<!--        阿里云仓库查找的版本-->
+        <dependency>
+            <groupId>aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>1.5.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.5.3</version>
+        </dependency>
+
+<!--        spring-aop-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework</groupId>-->
+<!--            <artifactId>spring-aop</artifactId>-->
+<!--            <version>5.1.1.RELEASE</version>-->
+<!--        </dependency>-->
+
     </dependencies>
 
     <build>
