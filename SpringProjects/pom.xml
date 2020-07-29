@@ -59,6 +59,7 @@
         </dependency>
 
 <!--        阿里云仓库查找的版本-->
+<!--        Spring AOP-->
         <dependency>
             <groupId>aspectj</groupId>
             <artifactId>aspectjrt</artifactId>
@@ -70,13 +71,34 @@
             <artifactId>aspectjweaver</artifactId>
             <version>1.5.3</version>
         </dependency>
+        <!--        spring-aop-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework</groupId>-->
+        <!--            <artifactId>spring-aop</artifactId>-->
+        <!--            <version>5.1.1.RELEASE</version>-->
+        <!--        </dependency>-->
+<!--        Spring JDBC-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>6.0.6</version>
+        </dependency>
+        <dependency>
+            <groupId>com.mchange</groupId>
+            <artifactId>c3p0</artifactId>
+            <version>0.9.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>5.2.2.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>5.2.1.RELEASE</version>
+        </dependency>
 
-<!--        spring-aop-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework</groupId>-->
-<!--            <artifactId>spring-aop</artifactId>-->
-<!--            <version>5.1.1.RELEASE</version>-->
-<!--        </dependency>-->
 
     </dependencies>
 

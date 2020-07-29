@@ -12,6 +12,28 @@
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
        http://www.springframework.org/schema/aop  http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
 
+
+
+<!--  Spring JDBC开始-->
+<!--  将连接池注入到Spring-->
+  <bean name="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+    <property name="driverClass" value="com.mysql.cj.jdbc.Driver"></property>
+<!--    注意如下value中的特殊符号需要转义：&-->
+    <property name="jdbcUrl" value="jdbc:mysql://47.96.145.149:3306/springTest?useSSL=false&amp;characterEncoding=utf8"></property>
+    <property name="user" value="root"></property>
+    <property name="password" value="123456"></property>
+  </bean>
+<!--  jdbcTemplate注入-->
+  <bean name="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+    <property name="dataSource" ref="dataSource"></property>
+  </bean>
+<!--   membersImpl注入-->
+  <bean name="membersImpl" class="com.brzt.impl.MembersImpl">
+    <property name="jdbcTemplate" ref="jdbcTemplate"></property>
+  </bean>
+  <!--  Spring JDBC结束-->
+
+
 <!--  Spring AOP开始-->
 <!--将通知织入到目标对象中-->
 <!--  目标对象-->
