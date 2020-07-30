@@ -16,6 +16,7 @@
         <module>ZookeepersProject</module>
         <module>SpringProjects</module>
         <module>SocketProject</module>
+        <module>SpringBootProjects</module>
     </modules>
 
 
