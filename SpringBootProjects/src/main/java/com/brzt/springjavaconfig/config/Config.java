@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
  * @data 2020/7/30
  */
 @Configuration
-public class config {
+public class Config {
 
     @Bean
     public Person person()
