@@ -21,4 +21,8 @@ public interface MembersDao {
     List<Members> getAll() throws Exception;
 
     int getCount() throws Exception;
+
+    void addAge(int id,int age) throws Exception;
+
+    void subAge(int id,int age) throws Exception;
 }

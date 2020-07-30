@@ -30,14 +30,14 @@ public class MembersImpl implements MembersDao {
 
     @Override
     public void update(Members members)  throws Exception{
-        String sql="update members set name=?,age=? where id=?";
+        String sql="update Members set name=?,age=? where id=?";
         jdbcTemplate.update(sql,members.getName(),members.getAge(),members.getId());
     }
 
     @Override
     public Members getById(int id)  throws Exception{
         Members members;
-        String sql = "select * from members where id=?";
+        String sql = "select * from Members where id=?";
         members = jdbcTemplate.queryForObject(sql, new RowMapper<Members>() {
             @Override
             public Members mapRow(ResultSet resultSet, int i) throws SQLException {
@@ -72,6 +72,18 @@ public class MembersImpl implements MembersDao {
     public int getCount()  throws Exception{
         String sql="select count(*) from Members";
         return  jdbcTemplate.queryForObject(sql,int.class);
+    }
+
+    @Override
+    public void addAge(int id, int age) throws Exception {
+        String sql="update Members set age=age+? where id=?";
+        jdbcTemplate.update(sql,age,id);
+    }
+
+    @Override
+    public void subAge(int id, int age) throws Exception {
+        String sql="update Members set age=age-? where id=?";
+        jdbcTemplate.update(sql,age,id);
     }
 
     public JdbcTemplate getJdbcTemplate()  throws Exception{

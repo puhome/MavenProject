@@ -6,11 +6,59 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="
        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-       http://www.springframework.org/schema/aop  http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+       http://www.springframework.org/schema/aop  http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+       http://www.springframework.org/schema/tx  http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+<!--Spring 事务开始-->
+<bean name="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+  <property name="dataSource" ref="dataSource"></property>
+</bean>
+<!--  模板配置事务开始-->
+  <bean name="transactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">
+  <property name="transactionManager" ref="transactionManager"></property>
+  </bean>
+<!--  模板配置事务结束-->
+<!--  xml配置事务开始-->
+<!--  配置通知-->
+<tx:advice id="txAdvice" transaction-manager="transactionManager">
+  <tx:attributes>
+<!--
+isolation:隔离级别
+propagation:传播属性
+read-only:是否只读
+-->
+<!--    <tx:method name="getService" isolation="DEFAULT" propagation="REQUIRED"  read-only="false" />-->
+<!--    经常用到的-->
+    <tx:method name="get*" isolation="DEFAULT" propagation="REQUIRED"  read-only="false" />
+    <tx:method name="find*" isolation="DEFAULT" propagation="REQUIRED"  read-only="false" />
+    <tx:method name="save*" isolation="DEFAULT" propagation="REQUIRED"  read-only="false" />
+    <tx:method name="persist*" isolation="DEFAULT" propagation="REQUIRED"  read-only="false" />
+    <tx:method name="delete*" isolation="DEFAULT" propagation="REQUIRED"  read-only="false" />
+    <tx:method name="remove*" isolation="DEFAULT" propagation="REQUIRED"  read-only="false" />
+    <tx:method name="update*" isolation="DEFAULT" propagation="REQUIRED"  read-only="false" />
+    <tx:method name="modify*" isolation="DEFAULT" propagation="REQUIRED"  read-only="false" />
+  </tx:attributes>
+</tx:advice>
+<!--  将通知植入到目标中-->
+  <aop:config>
+    <aop:pointcut id="pointcut" expression="execution(* com.brzt.translate.MerbersServiceImplXml.getService(..))"/>
+<!--
+advice-ref：指定通知
+pointcut-ref：指定切点
+-->
+    <aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut"></aop:advisor>
+  </aop:config>
+<!--  xml配置事务结束-->
+
+<!--    注解事务开始-->
+    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
+<!--    注解事务结束-->
+  <!--Spring 事务结束-->
 
 
 
@@ -19,7 +67,7 @@
   <bean name="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
     <property name="driverClass" value="com.mysql.cj.jdbc.Driver"></property>
 <!--    注意如下value中的特殊符号需要转义：&-->
-    <property name="jdbcUrl" value="jdbc:mysql://47.96.145.149:3306/springTest?useSSL=false&amp;characterEncoding=utf8"></property>
+    <property name="jdbcUrl" value="jdbc:mysql://121.41.107.226:3306/springTest?useSSL=false&amp;characterEncoding=utf8"></property>
     <property name="user" value="root"></property>
     <property name="password" value="123456"></property>
   </bean>
