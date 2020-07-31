@@ -1,0 +1,8 @@
+com\brzt\springjavaconfig\impl\Person.class
+com\brzt\springjavaconfig\factory\StudentFactory.class
+com\brzt\springjavaconfig\impl\Teacher.class
+com\brzt\springjavaconfig\ConfigNew.class
+com\brzt\springjavaconfig\DataSourceConfig.class
+com\brzt\springjavaconfig\impl\Student.class
+com\brzt\springjavaconfig\config\Config.class
+com\brzt\springjavaconfig\RedisConfig.class
