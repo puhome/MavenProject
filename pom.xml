@@ -17,6 +17,7 @@
         <module>SpringProjects</module>
         <module>SocketProject</module>
         <module>SpringBootProjects</module>
+        <module>NettyProjects</module>
     </modules>
 
 

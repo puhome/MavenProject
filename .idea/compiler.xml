@@ -13,6 +13,7 @@
         <module name="logging" />
         <module name="SpringProjects" />
         <module name="ZookeepersProject" />
+        <module name="NettyProjects" />
         <module name="servlet" />
         <module name="WebProject" />
         <module name="ejbs" />
