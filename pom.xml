@@ -18,6 +18,7 @@
         <module>SocketProject</module>
         <module>SpringBootProjects</module>
         <module>NettyProjects</module>
+        <module>AnnotationProject</module>
     </modules>
 
 
