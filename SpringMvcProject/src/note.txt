@@ -4,6 +4,7 @@
 2.新建test、java、resources等文件夹
 3.文件夹右键 mark directory as 对应的功能
 4.项目右键 add framework support，选择spring mvc框架
+5.引用必要的包，不是所有包都自动引入的
 
 hellowworld
 1.web.xml中配置springmvc前端控制器：DispatcherServlet

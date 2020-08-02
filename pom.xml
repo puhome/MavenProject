@@ -10,9 +10,6 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>CommonProject</module>
-        <module>WebProject</module>
-        <module>J2eeProject</module>
-        <module>SiteProject</module>
         <module>ZookeepersProject</module>
         <module>SpringProjects</module>
         <module>SocketProject</module>

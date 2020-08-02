@@ -1,2 +1,3 @@
 com\brzt\lock\RedisLock.class
+com\brzt\Stock.class
 com\brzt\lock\DbLock.class
