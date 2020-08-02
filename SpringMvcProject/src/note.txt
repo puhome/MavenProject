@@ -1,0 +1,12 @@
+
+创建mvc项目
+1.创建maven webapp项目
+2.新建test、java、resources等文件夹
+3.文件夹右键 mark directory as 对应的功能
+4.项目右键 add framework support，选择spring mvc框架
+
+hellowworld
+1.web.xml中配置springmvc前端控制器：DispatcherServlet
+2.配置applicationContext.xml
+3.配置springmvc的核心配置文件：applicationContext.xml
+4.编写请求处理器

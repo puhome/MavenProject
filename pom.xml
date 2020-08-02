@@ -19,6 +19,7 @@
         <module>SpringBootProjects</module>
         <module>NettyProjects</module>
         <module>AnnotationProject</module>
+        <module>SpringMvcProject</module>
     </modules>
 
 
