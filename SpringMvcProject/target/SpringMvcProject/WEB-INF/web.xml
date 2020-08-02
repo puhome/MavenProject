@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
+<!--  <display-name>Archetype Created Web Application</display-name>-->
+
+<!--  <listener>-->
+<!--    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>-->
+<!--  </listener>-->
+<!--&lt;!&ndash;  非MVC组件的配置&ndash;&gt;-->
+<!--  <context-param>-->
+<!--    <param-name>contextConfigLocation</param-name>-->
+<!--    <param-value>/WEB-INF/applicationContext.xml</param-value>-->
+<!--  </context-param>-->
+
+<!--SpringMVC前端控制器开始DispatcherServlet-->
+  <servlet>
+    <servlet-name>dispatcher</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+
+<!--    给DispatcherServlet配置初始化参数-->
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>/WEB-INF/dispatcher-servlet.xml</param-value>
+    </init-param>
+<!--
+设置DispatcherServlet在服务器启动时加载
+servlet:请求到达以后创建；服务器启动即创建；
+-->
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+
+
+
+  <servlet-mapping>
+    <servlet-name>dispatcher</servlet-name>
+<!--
+ *.form代表仅有此类后缀的菜拦截
+ -->
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+  <!--SpringMVC前端控制器结束DispatcherServlet-->
+
+</web-app>
