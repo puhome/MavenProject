@@ -8,6 +8,16 @@
 
 hellowworld
 1.web.xml中配置springmvc前端控制器：DispatcherServlet
-2.配置applicationContext.xml
-3.配置springmvc的核心配置文件：applicationContext.xml
+2.配置dispatcher-servlet.xml
+3.配置springmvc的核心配置文件：dispatcher-servlet.xml
 4.编写请求处理器
+
+执行流程
+1.启动tomcat服务器，加载DispatcherServlet，然后读取dispatcher-servlet.xml，创建SpringMvc容器对象（组件扫描请求处理器及请求处理器
+中的RequestMapping注解，得到具体的请求与请求处理器中方法的映射）；
+2.客户端发送请求
+3.请求到到web.xml中与url-pattern进行匹配，匹配成功就将请求交给DispatcherServlet
+4.DispatcherServlet根据请求与请求处理方法映射，交给请求处理方法进行处理
+5.请求处理方法处理完按请求，并返回一个字符串
+6.视图解析器根据请求处理方法返回的字符，解析成具体的物理视图路径
+

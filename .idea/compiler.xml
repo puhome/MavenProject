@@ -7,13 +7,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="SpringBootProjects" />
-        <module name="SocketProject" />
         <module name="CommonProject" />
-        <module name="ZookeepersProject" />
-        <module name="SpringProjects" />
-        <module name="NettyProjects" />
         <module name="AnnotationProject" />
+        <module name="ZookeepersProject" />
+        <module name="NettyProjects" />
+        <module name="SocketProject" />
         <module name="SpringMvcProject" />
+        <module name="SpringProjects" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
